@@ -3,7 +3,7 @@ const app = express()
 const morgan = require('morgan') //logging middleware
 const cors = require('cors')
 
-
+app.use(express.static('dist'))
 app.use(cors()) //allows requests from all origins to the server
 
 //json parser middleware
@@ -50,7 +50,6 @@ app.get('/', (request,response)=>{
 app.get('/api/persons', (request,response)=>{
     response.json(persons)
 })
-
 
 
 //get info about the number of persons and also the time of the request
