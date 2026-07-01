@@ -1,74 +1,55 @@
-const Header = (props) => {
-  return (
-    <>
-      <h1>{props.course}</h1>
-    </>
-  )
-}
-
-const Part = (props) => {
-  return (
-    <>
-      <p>{props.part} {props.numOfTasks}</p>
-    </>
-  )
-}
-
-const Content = (props) => {
-  const parts = props.parts // shows props has an attribute list and is given to the variable
-  return(
-    <>
-      {parts.map((item,index)=>{
-        return <Part
-                  key = {index}
-                  part = {item.name}
-                  numOfTasks = {item.exercises}
-              />
-      }) }
-    </>
-  )
-}
-
-const Total = (props) => {
-  let total = 0
-  let parts = props.parts
-
-  for (let i = 0; i < parts.length; i++) {
-    total += parts[i].exercises
-  }
-
-  return (
-    <>
-      <h4>Total number of exercises: {total} </h4>
-    </>
-  )
-}
+import Course from "./components/Course"
 
 const App = () => {
-  const course = {
-    name: "Half Stack application development",
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
-  }
+  const courses = [
+    {
+      name: 'Half Stack application development',
+      id: 1,
+      parts: [
+        {
+          name: 'Fundamentals of React',
+          exercises: 10,
+          id: 1
+        },
+        {
+          name: 'Using props to pass data',
+          exercises: 7,
+          id: 2
+        },
+        {
+          name: 'State of a component',
+          exercises: 14,
+          id: 3
+        },
+        {
+          name: 'Redux',
+          exercises: 11,
+          id: 4
+        }
+      ]
+    }, 
+    {
+      name: 'Node.js',
+      id: 2,
+      parts: [
+        {
+          name: 'Routing',
+          exercises: 3,
+          id: 1
+        },
+        {
+          name: 'Middlewares',
+          exercises: 7,
+          id: 2
+        }
+      ]
+    }
+  ]
 
   
   return (
     <>
-      <Header course={course.name} />
-      <Content parts={course.parts} />
-      <Total parts={course.parts} />
+      <Course courses={courses}/>
     </>
   )
 }

@@ -45,7 +45,6 @@ const App = () => {
       )
     }
 
-    // UPDATED VIEW: Passes the single country object downstream to our isolated component
     if (countriesToShow.length === 1) {
       return <CountryDetail country={countriesToShow[0]} />
     }
