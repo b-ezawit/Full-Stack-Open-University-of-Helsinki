@@ -1,8 +1,10 @@
 const express = require('express')
 const app = express()
+const morgan = require('morgan') //logging middleware
+const cors = require('cors')
 
-//logging middleware:
-const morgan = require('morgan')
+
+app.use(cors()) //allows requests from all origins to the server
 
 //json parser middleware
 app.use(express.json())
@@ -124,8 +126,7 @@ app.post('/api/persons',(request,response)=>{
 
 
 
-const PORT = 3001
-app.listen(PORT,()=>{
-    console.log(`Server running on port: ${PORT}`)
+const PORT = process.env.PORT || 3001
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
 })
-
