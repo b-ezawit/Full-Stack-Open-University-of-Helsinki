@@ -111,12 +111,12 @@ const App = () => {
         })
         .catch((err) => {
           setIsError(true)
-          setMessage('Error occured on HTTP POST request, create method')
+          setMessage(err.response.data.error)
           setTimeout(() => {
             setMessage(null)
           }, 5000)
 
-          console.log(err)
+          console.log(err.response.data.error)
         })
     }
   }
